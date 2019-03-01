@@ -1,0 +1,10 @@
+
+Terminal Command:
+
+jar cfm ShotChart.jar Manifest.txt *.class
+
+
+
+Manifest.txt contents (one line):
+
+Main-Class: SetUp

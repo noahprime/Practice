@@ -1,0 +1,1328 @@
+n <- c(5,10,25,50)
+var <- c(.074,.054,.0422,.021)
+par(mfrow = c(1,1));
+plot(n,var);
+hist(n)
+mean(n)
+mean(time)
+summary(time)
+fm3 <- nls(demand ` SSasympOrig(Time,A,lrc),data = BOD)
+summary(fm3)
+fm3 <- nls(demand ~ SSasympOrig(Time,A,lrc),data = BOD)
+summary(fm3)
+summary(A)
+summary(lrc)
+plot(A)
+plot(fm3)
+plot(A,fm3,A,fm3)
+plot(n,fm3)
+fm1 <- nls(demand ~ A*(1-exp(-exp(lrc)*Time)), data = BOD,#
+   start = c(A = 20, lrc = log(.35)))#
+coef(fm1)
+mean(n)
+mean(var)
+n <- c(1,2,3,4,5)
+var <- c(.02,.05,.0678,.12,.189)
+par(mfrow = c(2,1))
+hist(n);box();
+hist(var);box();
+mean(var)
+mean(n)
+par(mfrow = c(1,1))
+boxplot(bind(n,var))
+boxplot(bind = (n,var))
+boxplot(bind = c(n,var))
+alleles <- c(rep("A",10), rep("a",10))
+plot(1,0,type="n",xlim=c(1,100),ylim=c(0,20),xlab="gneration",ylab="number of A alleles")
+for(i in 1:100){}
+for(i in 1:100){
+alleles <- sample(alleles,20,replace=TRUE)
+points(i,length(alleles[alleles=="A"]),pch=19,col="red")
+}
+alleles <- c(rep("A",10), rep("a",10))#
+> plot(1,0,type="n",xlim=c(1,100),ylim=c(0,20),xlab="gneration",ylab="number of A alleles")#
+> for(i in 1:100){#
++ alleles <- sample(alleles,20,replace=TRUE)#
++ points(i,length(alleles[alleles=="A"]),pch=19,col="red")#
++ }
+alleles <- c(rep("A",10), rep("a",10))#
+> plot(1,0,type="n",xlim=c(1,100),ylim=c(0,20),xlab="gneration",ylab="number of A alleles")#
+> for(i in 1:100){alleles <- sample(alleles20,replace=TRUE)points(i,length(alleles[alleles=="A"]),pch=19,col="red")}
+alleles <- c(rep("A",10), rep("a",10))#
+plot(1,0,type="n",xlim=c(1,100),ylim=c(0,20),xlab="gneration",ylab="number of A alleles")#
+for(i in 1:100){alleles <- sample(alleles,20,replace=TRUE)#
++ points(i,length(alleles[alleles=="A"]),pch=19,col="red")#
++ }
+alleles <- c(rep("A",10), rep("a",10))#
+#
+n <- sum(table(alleles))#
+generations <- 0#
+#
+while(max(table(alleles))<n){#
+alleles <- sample(alleles, 20, replace=TRUE)#
+generations <- generations + 1#
+}#
+#
+generations
+n <- c(alleles <- c(rep("A",10), rep("a",10))#
+#
+n <- sum(table(alleles))#
+generations <- 0#
+#
+while(max(table(alleles))<n){#
+alleles <- sample(alleles, 20, replace=TRUE)#
+generations <- generations + 1#
+}#
+#
+generations),alleles <- c(rep("A",10), rep("a",10))#
+#
+n <- sum(table(alleles))#
+generations <- 0#
+#
+while(max(table(alleles))<n){#
+alleles <- sample(alleles, 20, replace=TRUE)#
+generations <- generations + 1#
+}#
+#
+generations,alleles <- c(rep("A",10), rep("a",10))#
+#
+n <- sum(table(alleles))#
+generations <- 0#
+#
+while(max(table(alleles))<n){#
+alleles <- sample(alleles, 20, replace=TRUE)#
+generations <- generations + 1#
+}#
+#
+generations,alleles <- c(rep("A",10), rep("a",10))#
+#
+n <- sum(table(alleles))#
+generations <- 0#
+#
+while(max(table(alleles))<n){#
+alleles <- sample(alleles, 20, replace=TRUE)#
+generations <- generations + 1#
+}#
+#
+generations)
+alleles <- c(rep("A",10), rep("a",10))#
+#
+n <- sum(table(alleles))#
+generations <- 0#
+#
+while(max(table(alleles))<n){#
+alleles <- sample(alleles, 20, replace=TRUE)#
+generations <- generations + 1#
+}#
+#
+generations
+sim.fixation <- function(alleles, num.sims=100){#
+n <- length(alleles)#
+generations <- rep(0, num.sims)#
+#
+for(i in 1:num.sims){#
+temp.alleles <- alleles#
+while(max(table(temp.alleles))<n){#
+temp.alleles <- sample(temp.alleles, n, replace=TRUE)#
+generations[i] <- generations[i] + 1#
+}#
+}#
+hist(generations, main="Generations until Fixation")#
+return(g = list(generations=generations, mean.gen = mean(generations), sd.gen = sd(generations)))#
+#
+}
+alleles <- c(rep("A",10), rep("a",10))#
+sim.fixation(alleles, 200)#
+#
+alleles <- c(rep("A",20), rep("a",20))#
+sim.fixation(alleles, 200)#
+#
+alleles <- c(rep("A",40), rep("a",40))#
+sim.fixation(alleles, 200)#
+#
+alleles <- c(rep("A",5), rep("a",15))#
+sim.fixation(alleles, 200)#
+#
+alleles <- c(rep("A",2), rep("a",18))#
+sim.fixation(alleles, 200)#
+#
+alleles <- c(rep("A",2), rep("a",18), rep("B", 20))#
+sim.fixation(alleles, 200)
+sim.lose.rare.allele <- function(alleles, num.sims=100){#
+#
+n <- length(alleles)#
+num.unique.alleles <- length(unique(alleles))#
+generations <- rep(0, num.sims)#
+#
+for(i in 1:num.sims){#
+temp.alleles <- alleles#
+while(length(unique(temp.alleles))==num.unique.alleles){#
+temp.alleles <- sample(temp.alleles, n, replace=TRUE)#
+generations[i] <- generations[i] + 1#
+}#
+}#
+hist(generations, main="Generations until an Allele is Lost")#
+return(g = list(generations=generations, mean.gen = mean(generations), sd.gen = sd(generations)))#
+#
+}
+alleles <- c(rep("A",200), rep("a",200), rep("B", 4))#
+sim.lose.rare.allele(alleles, 200)
+alleles <- c(rep("A",4000), rep("a",4000), rep("B", 2))#
+sim.lose.rare.allele(alleles, 200)
+alleles <- c(rep("A",8000), rep("a",8000), rep("B", 2))#
+sim.lose.rare.allele(alleles, 200)
+alleles <- c(rep("A",4000), rep("a",4000), rep("B", 2))#
+sim.lose.rare.allele(alleles, 200)
+alleles <- c(rep("A",40000), rep("a",40000), rep("B", 2))#
+sim.lose.rare.allele(alleles, 200)
+alleles <- c(rep("A",400), rep("a",400), rep("B", 2))#
+sim.lose.rare.allele(alleles, 1000)
+alleles <- c(rep("A",40000), rep("a",40000), rep("B", 2))#
+sim.lose.rare.allele(alleles, 10000)
+demo()
+is.things
+is.things()
+is.things.start()
+demo(is.things)
+demo(colors)
+return
+Return
+die
+mean(color)
+mean(n'')
+noahscolors <- (turquoise, coral, indianred)
+noahscolors <- ("turquoise","coral","indianred")
+cuteness <- c(1,8,27,64,125)
+noahs <- c(1,2,3,4,5)
+par(mfrow = c(1,1))
+plot(noahs,cuteness,"# of Noah's","Cuteness Level")
+plot(noahs,cuteness)
+noahs <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+cuteness <- noahs^3
+plot(noahs,cuteness)
+plot(noahs,cuteness,12,2000,"# of Noahs","Cuteness Level out of 100")
+plot(Suck my dick)
+mean(cuteness)
+sd(cuteness)
+n <- c(1,342,25,5,754,3,34,3,,1,6,7,5,46,7,63,135,7,15,8,90,7,07,1,0,,3,70,,6,13,68749,13,93,25,97662,3,687,2,7,43,24,7,9,0476,7,80,46,13,7,90,1,9)
+n <- c(1,342,25,5,754,3,34,3,11,1,6,7,5,46,7,63,135,7,15,8,90,7,07,1,0,5,3,70,10,6,13,68749,13,93,25,97662,3,687,2,7,43,24,7,9,0476,7,80,46,13,7,90,1,9)
+length(n)
+hist(n):box();
+i <- 5#
+i
+n <- 100#
+numAs <- 100#
+numgens <- 2000#
+numTrials <- 1000#
+count <- 0#
+for(j 1:trials)#
+{#
+	for(i 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,numAs/n)#
+	}#
+	if(numAs == 0)#
+	{#
+		count <- count + 1#
+	}#
+}#
+pExtinct <- count/numTrials#
+pExtinct
+n <- 100#
+numAs <- 100#
+numgens <- 2000#
+numTrials <- 1000#
+count <- 0#
+for(j, 1:trials)#
+{#
+	for(i, 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,numAs/n)#
+	}#
+	if(numAs == 0)#
+	{#
+		count <- count + 1#
+	}#
+}#
+pExtinct <- count/numTrials#
+pExtinct
+n <- 100#
+numAs <- 100#
+numgens <- 2000#
+numTrials <- 1000#
+count <- 0#
+for(j in 1:trials)#
+{#
+	for(i in 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,numAs/n)#
+	}#
+	if(numAs == 0)#
+	{#
+		count <- count + 1#
+	}#
+}#
+pExtinct <- count/numTrials#
+pExtinct
+n <- 100#
+numAs <- 100#
+numgens <- 2000#
+numTrials <- 1000#
+count <- 0#
+for(j in 1:numTrials)#
+{#
+	for(i in 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,numAs/n)#
+	}#
+	if(numAs == 0)#
+	{#
+		count <- count + 1#
+	}#
+}#
+pExtinct <- count/numTrials#
+pExtinct
+warnings()
+n <- 100#
+numAs <- 100#
+numgens <- 2000#
+numTrials <- 1000#
+count <- 0#
+for(j in 1:numTrials)#
+{#
+	for(i in 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,(numAs/n))#
+	}#
+	if(numAs = 0)#
+	{#
+		count <- count + 1#
+	}#
+}#
+pExtinct <- count/numTrials#
+pExtinct
+n <- 100#
+numAs <- 100#
+numgens <- 2000#
+numTrials <- 1000#
+count <- 0#
+#for(j in 1:numTrials)#
+#{#
+	for(i in 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,(numAs/n))#
+	}
+numAs
+for(i in 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,(numAs/n))#
+	}#
+	if(numAs == 0)#
+	{#
+		count <- count + 1#
+	}#
+}#
+pExtinct <- count/numTrials#
+pExtinct
+kjh
+hk
+hgd
+n <- 100#
+numAs <- 100#
+numgens <- 2000#
+numTrials <- 1000#
+count <- 0#
+for(j in 1:numTrials)#
+{#
+	for(i in 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,(numAs/n))#
+	}#
+	if(numAs == 0)#
+	{#
+		count <- count + 1#
+	}#
+}#
+pExtinct <- count/numTrials#
+pExtinct
+n <- 100#
+numAs <- 100#
+numgens <- 2000#
+numTrials <- 1000#
+count <- 0#
+for(j in 1:numTrials)#
+{#
+	for(i in 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,(numAs/n))#
+	}#
+	if(numAs == 0){#
+		count <- count + 1#
+	}#
+}#
+pExtinct <- count/numTrials#
+pExtinct
+x
+x <- rbinom(1,50,.5)
+x
+numAs <- 100
+numAs <- rbinom(1,50,numAs/50)
+numAs <- 100
+numAs <- rbinom(1,50,(numAs/50))
+x <- 100#
+numAs <- 100#
+newAs <- rbinom(1,2*x,(numAs/(2*x))#
+newAs
+x <- 100#
+numAs <- 100#
+newAs <- rbinom(1,2*x,(numAs/(2*x));#
+newAs
+x <- 100#
+numAs <- 100#
+newAs <- rbinom(1,2*x,(numAs/(2*x)));#
+newAs
+x <- 100#
+numAs <- 100#
+numAs <- rbinom(1,2*x,(numAs/(2*x)));#
+numAs
+n <- 100#
+numAs <- 100#
+numgens <- 2000#
+numTrials <- 1000#
+count <- 0#
+for(j in 1:numTrials)#
+{#
+	for(i in 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+	}#
+	if(numAs == 0){#
+		count <- count + 1#
+	}#
+}#
+pExtinct <- count/numTrials#
+pExtinct
+n <- 100#
+numAs <- 100#
+numgens <- 2000#
+numTrials <- 1000#
+count <- 0#
+for(j in 1:numTrials)#
+{#
+	for(i in 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+	}#
+	#if(numAs == 0){#
+	#	count <- count + 1#
+	#}#
+}#
+numAs
+n <- 100#
+numgens <- 2000#
+numTrials <- 1000#
+count <- 0#
+for(j in 1:numTrials)#
+{#
+	numAs <- 100#
+	for(i in 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+	}#
+	if(numAs == 0){#
+		count <- count + 1#
+	}#
+}#
+pExtinct <- count/numTrials#
+pExtinct
+n <- 100#
+numgens <- 2000#
+numTrials <- 2000#
+count <- 0#
+for(j in 1:numTrials)#
+{#
+	numAs <- 100#
+	for(i in 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+	}#
+	if(numAs == 0){#
+		count <- count + 1#
+	}#
+}#
+pExtinct <- count/numTrials#
+pExtinct
+#Probablity that A's go extinct#
+n <- 100#
+numgens <- 2000#
+numTrials <- 2000#
+count <- 0#
+for(j in 1:numTrials)#
+{#
+	numAs <- 0.4*n#
+	for(i in 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+	}#
+	if(numAs == 0){#
+		count <- count + 1#
+	}#
+}#
+pExtinct <- count/numTrials#
+pExtinct
+#Probablity that A's go extinct#
+n <- 100#
+numgens <- 2000#
+numTrials <- 2000#
+count <- 0#
+for(j in 1:numTrials)#
+{#
+	numAs <- 0.4*2*n#
+	for(i in 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+	}#
+	if(numAs == 0){#
+		count <- count + 1#
+	}#
+}#
+pExtinct <- count/numTrials#
+pExtinct
+#Probablity that A's go extinct#
+n <- 100#
+numgens <- 2000#
+numTrials <- 2000#
+count <- 0#
+for(j in 1:numTrials)#
+{#
+	numAs <- 0.3*2*n#
+	for(i in 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+	}#
+	if(numAs == 0){#
+		count <- count + 1#
+	}#
+}#
+pExtinct <- count/numTrials#
+pExtinct
+#Probablity that A's go extinct#
+n <- 100#
+numgens <- 2000#
+numTrials <- 2000#
+count <- 0#
+for(j in 1:numTrials)#
+{#
+	numAs <- 0.7*2*n#
+	for(i in 1:numgens)#
+	{#
+		numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+	}#
+	if(numAs == 0){#
+		count <- count + 1#
+	}#
+}#
+pExtinct <- count/numTrials#
+pExtinct
+n <- 100#
+numgens <- 2000#
+numTrials <- 2000#
+count <- seq(0,0,0,0,0,0,0,0,0)#
+numAs <- seq(20,40,60,80,100,120,140,160,180)#
+pExtinct <- seq(0,0,0,0,0,0,0,0,0)#
+for(x in 1:9){#
+	for(j in 1:numTrials)#
+	{#
+		numAs <- numAs[x]#
+		for(i in 1:numgens)#
+		{#
+			numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+		}#
+		if(numAs == 0){#
+			count[x] <- count[x] + 1#
+		}#
+	}#
+	pExtinct[x] <- count[x]/numTrials#
+	cat("/n prob = ", pExtinct[x],"; numAs = ",numAs[x],";")#
+}
+n <- 100#
+numgens <- 2000#
+numTrials <- 2000#
+count <- c(0,0,0,0,0,0,0,0,0)#
+numAs <- c(20,40,60,80,100,120,140,160,180)#
+pExtinct <- c(0,0,0,0,0,0,0,0,0)#
+for(x in 1:9){#
+	for(j in 1:numTrials)#
+	{#
+		numAs <- numAs[x]#
+		for(i in 1:numgens)#
+		{#
+			numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+		}#
+		if(numAs == 0){#
+			count[x] <- count[x] + 1#
+		}#
+	}#
+	pExtinct[x] <- count[x]/numTrials#
+	cat("\n prob = ", pExtinct[x],"; numAs = ",numAs[x],";")#
+}
+nums <- c(1,2,3,4)
+nums[2]
+warnings()
+n <- 100#
+numgens <- 2000#
+numTrials <- 2000#
+count <- c(0,0,0,0,0,0,0,0,0)#
+numAs <- c(20,40,60,80,100,120,140,160,180)#
+pExtinct <- c(0,0,0,0,0,0,0,0,0)#
+for(x in 1:9){#
+	for(j in 1:numTrials)#
+	{#
+		As <- numAs[x]#
+		for(i in 1:numgens)#
+		{#
+			As <- rbinom(1,2*n,(As/(2*n)));#
+		}#
+		if(As == 0){#
+			count[x] <- count[x] + 1#
+		}#
+	}#
+	pExtinct[x] <- count[x]/numTrials#
+	cat("\n prob = ", pExtinct[x],"; numAs = ",numAs[x],";")#
+}
+n <- 100#
+numAs <- n#
+numTrials <- 1000#
+numGen <- c(1:1000)#
+for(i in 1:numTrials){#
+	while(numAs > 0 & numAs < 200){#
+		numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+		numGen[i] <- numGen[i] + 1#
+	}#
+}#
+hist(numGen)
+n <- 100#
+numAs <- n#
+numTrials <- 1000#
+numGen <- c(1:1000)#
+for(i in 1:numTrials){#
+	numGen[i] <- 0#
+	while(numAs > 0 & numAs < 200){#
+		numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+		numGen[i] <- numGen[i] + 1#
+	}#
+}#
+hist(numGen)
+numGen
+n <- 100#
+numAs <- n#
+numTrials <- 1000#
+numGen <- c(1:1000)#
+for(i in 1:numTrials){#
+	numGen[i] <- 0#
+	while(numAs > 0 && numAs < 200){#
+		numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+		numGen[i] <- numGen[i] + 1#
+	}#
+}#
+hist(numGen)
+n <- 100#
+numAs <- n#
+numTrials <- 1000#
+numGen <- c(1:1000)#
+for(i in 1:numTrials){#
+	numGen[i] <- 0#
+	done <- 0#
+	while(done != 1){#
+		numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+		numGen[i] <- numGen[i] + 1#
+		if((numAs == 0) | (numAs == 200)){#
+			done <- 1#
+		}#
+	}#
+}#
+hist(numGen)
+n <- 100#
+numTrials <- 1000#
+numGen <- c(1:1000)#
+for(i in 1:numTrials){#
+	numGen[i] <- 0#
+	done <- 0#
+	while(done != 1){#
+		numAs <- n#
+		numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+		numGen[i] <- numGen[i] + 1#
+		if((numAs == 0) | (numAs == 200)){#
+			done <- 1#
+		}#
+	}#
+}#
+hist(numGen)
+n <- 100#
+numTrials <- 50#
+numGen <- c(1:50)#
+for(i in 1:numTrials){#
+	numGen[i] <- 0#
+	done <- 0#
+	while(done != 1){#
+		numAs <- n#
+		numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+		numGen[i] <- numGen[i] + 1#
+		if((numAs == 0) | (numAs == 200)){#
+			done <- 1#
+		}#
+	}#
+}#
+hist(numGen)
+n <- 100#
+numTrials <- 50#
+numGen <- c(1:50)#
+for(i in 1:numTrials){#
+	numGen[i] <- 0#
+	done <- 0#
+	while(done != 1){#
+		numAs <- n#
+		numAs <- rbinom(1,2*n,(numAs/(2*n)));#
+		numGen[i] <- numGen[i] + 1#
+		if((numAs == 0) | (numAs == 200)){#
+			done <- 1#
+		}#
+	}#
+	cat("\n",numGen[i]," Genrations;")#
+}#
+hist(numGen)
+#Probablity that A's go extinct#
+n <- 100#
+numgens <- 2000#
+numTrials <- 2000#
+count <- c(0,0,0,0,0,0,0,0,0)#
+numAs <- c(20,40,60,80,100,120,140,160,180)#
+pExtinct <- c(0,0,0,0,0,0,0,0,0)#
+for(x in 1:9){#
+	for(j in 1:numTrials)#
+	{#
+		As <- numAs[x]#
+		for(i in 1:numgens)#
+		{#
+			As <- rbinom(1,2*n,(As/(2*n)));#
+		}#
+		if(As == 0){#
+			count[x] <- count[x] + 1#
+		}#
+	}#
+	pExtinct[x] <- count[x]/numTrials#
+	cat("\n prob = ", pExtinct[x],"; P(A) = ",numAs[x]/(2*n),";")#
+}#
+PA <- numAs/(2*n)
+stocks <- read.table("SRT.txt",header = T,sep = " ");#
+attach(stocks);
+stocks <- read.table("SRT.txt",header = T,sep = " ");#
+attach(stocks);
+stocks <- read.table("SRT.txt",header = T,sep = "");#
+attach(stocks);
+stocks <- read.table("SRT.txt",header = T,sep = "");#
+attach(stocks);
+stocks <- read.table("SRT.rtf",header = T,sep = "");#
+attach(stocks);
+stocks <- read.table("SRT.rtf",header = T,sep = "	");#
+attach(stocks);
+MSFT
+BAC
+stocks <- read.table("SRT.rtf",header = T,sep = "	");#
+attach(stocks);
+stocks <- read.table("SRT.rtf",header = T,sep = "");#
+attach(stocks);
+stocks <- read.table("SRT.rtf",header = F,sep = "");#
+attach(stocks);
+stocks <- read.table("SRT.rtf",header = T,sep = "",dec = ".",row.names);#
+attach(stocks);
+stocks <- read.table("SRT.rtf",header = T,sep = "",row.names);#
+attach(stocks);
+stocks <- read.table("SRT.rtf",header = T,sep = "");#
+attach(stocks);
+stocks <- read.table("SRT.txt",header = T,sep = "");#
+attach(stocks);
+BAC
+EBS
+AV
+stocks <- read.table("SRT.txt",header = T,sep = "",row.names);#
+attach(stocks);
+stocks <- read.table("SRT.txt",header = T,sep = "");#
+attach(stocks);
+BAC
+BAC[2]
+stocks[1]
+stocks[1,1]
+stocks[1,1;]
+stocks[1,1:]
+stocks[1,]
+stocks[,1]
+curVal <- seq()#
+for(x in range(1,length(stocks[1,])){#
+	if(stocks[1,x] > 1000000){#
+		curVal <- curVal + stocks[6,x];#
+	}#
+}#
+hist(curVal);
+curVal <- seq()#
+for(x in range(1,length(stocks[1,]))#
+	if(stocks[1,x] > 1000000)#
+		curVal <- curVal + stocks[6,x];#
+hist(curVal);
+for(x in range(1,length(stocks[1,])){#
+	if(stocks[1,x] > 1000000)#
+		curVal <- curVal + stocks[6,x];#
+}#
+hist(curVal);
+curVal <- seq();#
+for(x in range(1,length(stocks[1,])):#
+	if(stocks[1,x] > 1000000):#
+		curVal <- curVal + stocks[6,x];#
+hist(curVal);
+curVal <- seq();#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] > 1000000){#
+		curVal <- curVal + stocks[6,x];#
+	}#
+}#
+hist(curVal);
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] > 1000000){#
+		curVal[i] <- stocks[6,x];#
+		i++;#
+	}#
+}#
+hist(curVal);
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] > 1000000){#
+		curVal[i] <- stocks[6,x];#
+		i <- i + 1;#
+	}#
+}#
+hist(curVal);
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] > 1000000){#
+		curVal[i] <- stocks[6,x];#
+		i <- i + 1;#
+	}#
+}#
+hist(curVal,breaks = 5);
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+hist(curVal,breaks = 5);
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+hist(curVal,breaks = 10);
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+gghist(aes(curVal),binwidth = 1);
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+geom_hist(aes(curVal),binwidth = 1);
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+geom_histogram(aes(curVal),binwidth = 1);
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+geom_histogram(aes(curVal),binwidth = 1);
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+ggplot(aes(curval)) +#
+	geom_histogram(binwidth = 1);
+ggplot(stocks,aes(curval)) +#
+	geom_histogram(binwidth = 1);
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+ggplot(stocks,aes(curval)) +#
+	geom_histogram(binwidth = 1);
+curVal
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+ggplot(stocks,aes(curVal)) +#
+	geom_histogram(binwidth = 1);
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+ggplot(stocks,aes(curVal)) +#
+	geom_histogram(alpha = 0.75)
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+ggplot(stocks,aes(curVal)) +#
+	geom_histogram()
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+ggplot(stocks[2,],aes(curVal)) +#
+	geom_histogram()
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+ggplot(curVal,aes(curVal)) +#
+	geom_histogram()
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+ggplot(curVal[],aes(curVal)) +#
+	geom_histogram()
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+ggplot(aes(curVal)) +#
+	geom_histogram()
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+ggplot(stocks[2,],aes(curVal)) +#
+	geom_histogram()
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+ggplot(fortify(numeric,curVal),aes(curVal)) +#
+	geom_histogram()
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+ggplot(fortify(curVal),aes(curVal)) +#
+	geom_histogram()
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+ggplot(environment = stocks,aes(curVal)) +#
+	geom_histogram()
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+ggplot(data = stocks,environment = stocks,aes(curVal)) +#
+	geom_histogram()
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+hist(curVal,breaks = 10);
+hist()
+hist
+help(hist)
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+hist(curVal,breaks = 10,col = "grey",xlab = "P/E",ylab = "count",main = "count vs P/E");
+hist(curVal,binfwidth = 1,col = "grey",xlab = "P/E",ylab = "count",main = "count vs P/E");
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+hist(curVal,binwidth = 1,col = "grey",xlab = "P/E",ylab = "count",main = "count vs P/E");
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+hist(curVal,breaks = (curVal[length(curVal)]-curVal[1])/10,col = "grey",xlab = "P/E",ylab = "count",main = "count vs P/E");
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+hist(curVal,breaks = (curVal[length(curVal)]-curVal[1])/5,col = "grey",xlab = "P/E",ylab = "count",main = "count vs P/E");
+curVal[length(curVal)]-curVal[1])/5
+(curVal[length(curVal)]-curVal[1])/5
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+sort(curVal);#
+hist(curVal,breaks = (curVal[length(curVal)]-curVal[1])/5,col = "grey",xlab = "P/E",ylab = "count",main = "count vs P/E");
+sort(curVal);
+curVal
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+curVal <- sort(curVal);#
+hist(curVal,breaks = (curVal[length(curVal)]-curVal[1])/5,col = "grey",xlab = "P/E",ylab = "count",main = "count vs P/E");
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+curVal <- sort(curVal);#
+data <- data.frame(curVal);#
+ggplot(data=data,aes(curVal)) + #
+	geom_histogram()
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+curVal <- sort(curVal);#
+data <- data.frame(curVal);#
+ggplot(data=data,aes(curVal)) + #
+	geom_histogram(binwidth = 1,alpha = .75) + #
+	labs(title = "count vs P/E",x = "P/E",y = "count")
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+curVal <- sort(curVal);#
+data <- data.frame(curVal);#
+ggplot(data=data,aes(curVal)) + #
+	geom_histogram(binwidth = 1,alpha = .75) + #
+	labs(title = "count vs P/E",x = "P/E",y = "count") +#
+	geom_hline(yintercept=0,size=0.3,color="black")
+curVal <- sort(curVal);#
+data <- data.frame(curVal);#
+ggplot(data=data,aes(curVal)) + #
+	geom_histogram(binwidth = 5,alpha = .75) + #
+	labs(title = "count vs P/E",x = "P/E",y = "count") +#
+	geom_hline(yintercept=0,size=0.3,color="black")
+stocks <- read.table("SRT.txt",header = T,sep = "");#
+attach(stocks);#
+#
+#first row of stocks#
+stocks[1,]#
+#first col of stocks#
+stocks[,1]#
+#first col first row#
+stocks[1,1]#
+#
+#histogram of curent P/E for stock with AVG Volume >= 1 mill#
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+curVal <- sort(curVal);#
+data <- data.frame(curVal);#
+ggplot(data=data,aes(curVal)) + #
+	geom_histogram(binwidth = 5,alpha = .75) + #
+	labs(title = "count vs P/E",x = "P/E",y = "count") +#
+	geom_hline(yintercept=0,size=0.3,color="black")
+ggplot(data=data,aes(curVal)) + #
+	geom_boxplot(outlier.color = "red")
+ggplot(data=data,aes(curVal,stocks[1,])) + #
+	geom_histogram(binwidth = 5,alpha = .75) + #
+	labs(title = "count vs P/E",x = "P/E",y = "count") +#
+	geom_hline(yintercept=0,size=0.3,color="black")
+stocks <- read.table("SRT.txt",header = T,sep = "");#
+attach(stocks);#
+#
+#first row of stocks#
+stocks[1,]#
+#first col of stocks#
+stocks[,1]#
+#first col first row#
+stocks[1,1]#
+#
+#histogram of curent P/E for stock with AVG Volume >= 1 mill#
+curVal <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		i <- i + 1;#
+	}#
+}#
+curVal <- sort(curVal);#
+data <- data.frame(curVal);#
+ggplot(data=data,aes(curVal,stocks[1,])) + #
+	geom_boxplot(outlier.color = "red")
+curVal <- sort(curVal);#
+data <- data.frame(curVal);#
+ggplot(data=data,aes(curVal,100000)) + #
+	geom_boxplot(outlier.color = "red")
+curVal <- sort(curVal);#
+data <- data.frame(curVal);#
+ggplot(data=data,aes(100000,curVal)) + #
+	geom_boxplot(outlier.color = "red")
+curVal <- sort(curVal);#
+data <- data.frame(curVal);#
+ggplot(data=data,aes(100000,curVal)) + #
+	geom_boxplot(outlier.color = "red",varwidth = TRUE,color = "blue")
+curVal <- sort(curVal);#
+data <- data.frame(curVal);#
+ggplot(data=data,aes(stocks[1,],curVal)) + #
+	geom_boxplot(outlier.color = "red",varwidth = TRUE,fill = "blue")
+stocks <- read.table("SRT.txt",header = T,sep = "");#
+attach(stocks);#
+#
+#first row of stocks#
+stocks[1,]#
+#first col of stocks#
+stocks[,1]#
+#first col first row#
+stocks[1,1]#
+#
+#histogram of curent P/E for stock with AVG Volume >= 1 mill#
+curVal <- seq();#
+AV <- seq();#
+i <- 1#
+for(x in 1:length(stocks[1,]))#
+{#
+	if(stocks[1,x] >= 1000000){#
+		curVal[i] <- stocks[2,x];#
+		AV[i] <- stocks[1,x];#
+		i <- i + 1;#
+	}#
+}#
+curVal <- sort(curVal);#
+data <- data.frame(curVal);#
+ggplot(data=data,aes(AV,curVal)) + #
+	geom_boxplot(outlier.color = "red",varwidth = TRUE,fill = "blue")
+curVal <- sort(curVal);#
+data <- data.frame(curVal);#
+ggplot(data=data,aes(AV,curVal)) + #
+	geom_boxplot(aes(group = cut_width(AV,5000000)),outlier.color = "red",varwidth = TRUE,fill = "blue")
+curVal <- sort(curVal);#
+data <- data.frame(curVal);#
+ggplot(data=data,aes(AV,curVal)) + #
+	geom_boxplot(aes(group = cut_width(AV,10000000)),outlier.color = "red",varwidth = TRUE,fill = "blue")
+data <- data.frame(curVal);#
+ggplot(data=data,aes(AV,curVal)) + #
+	geom_boxplot(aes(group = cut_width(AV,1000000000)),outlier.color = "red",varwidth = TRUE,fill = "blue")
+curVal <- sort(curVal);#
+data <- data.frame(curVal);#
+ggplot(data=data,aes(AV,curVal)) + #
+	geom_boxplot(aes(group = cut_width(AV,100000000)),outlier.color = "red",varwidth = TRUE,fill = "blue")
+gglot(stocks,aes(stock[1,],stock[2,])) + #
+	geom_boxplot(aes(group = cut_width(AV,100000000)),outlier.color = "red",varwidth = TRUE,fill = "white",color = "blue")
+stocks <- read.table("SRT.txt",header = T,sep = "");#
+attach(stocks);#
+#
+#first row of stocks#
+stocks[1,]#
+#first col of stocks#
+stocks[,1]#
+#first col first row#
+stocks[1,1]#
+#
+ggplot(stocks,aes(stock[1,],stock[2,])) + #
+	geom_boxplot(aes(group = cut_width(AV,100000000)),outlier.color = "red",varwidth = TRUE,fill = "white",color = "blue")
+ggplot(stocks,aes(stock[1,],stock[2,])) + #
+	geom_boxplot(aes(group = cut_width(stock[1,],100000000)),outlier.color = "red",varwidth = TRUE,fill = "white",color = "blue")
+stocks <- read.table("SRT.txt",header = T,sep = "");#
+attach(stocks);#
+#
+ggplot(data=stocks,aes(AV,PE) + #
+	geom_boxplot(aes(group = cut_width(PE,8000000)),outlier.color = "red",varwidth = TRUE,fill = "white",color = "blue")
+;
+stocks <- read.table("SRT.txt",header = T,sep = "");#
+attach(stocks);
+AV
+PE
+ggplot(data=stocks,aes(AV,PE) + #
+	geom_boxplot(aes(group = cut_width(PE,8000000)),outlier.color = "red",varwidth = TRUE,fill = "white",color = "blue")
+df
+stocks <- read.table("SRT.txt",header = T,sep = "");#
+attach(stocks);#
+#
+ggplot(data=stocks,aes(AV,PE) + #
+	geom_boxplot(aes(group = cut_width(PE,8000000)),outlier.color = "red",varwidth = TRUE,fill = "white",color = "blue");
+stocks <- read.table("SRT.txt",header = T,sep = "");#
+attach(stocks);#
+#
+ggplot(data=stocks,aes(AV,PE) + #
+	geom_boxplot(aes(group = cut_width(AV,8000000)),outlier.color = "red",varwidth = TRUE,fill = "white",color = "blue")
+ggplot(stocks,aes(AV,PE) + #
+	geom_boxplot(outlier.color = "red",varwidth = TRUE,fill = "white",color = "blue")
+ggplot(stocks,aes(AV,PE) + #
+	geom_boxplot(outlier.color = "red",fill = "white",color = "blue")
+ggplot(stocks,aes(AV,PE)) + #
+	geom_boxplot(outlier.color = "red",fill = "white",color = "blue")
+ggplot(stocks,aes(AV,PE)) + #
+	geom_boxplot(aes(group = cut_width(AV,8000000)),outlier.color = "red",fill = "white",color = "blue")
+ggplot(stocks,aes(AV,PE)) + #
+	geom_boxplot(aes(group = cut_width(AV,80000000)),outlier.color = "red",fill = "white",color = "blue")
+ggplot(stocks,aes(AV,PE)) + #
+	geom_boxplot(aes(group = cut_width(AV,10000000)),outlier.color = "red",fill = "white",color = "blue")
