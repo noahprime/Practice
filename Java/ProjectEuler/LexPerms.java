@@ -4,12 +4,21 @@ public class LexPerms {
   static int[] arr;
 
   public static void main(String[] args){
-    arr = new int[] {0,1,2,3,4,5,6,7,8,9};
-    for(int i = 0;i < 999999;i++){
+    int arrLength = (int)Integer.parseInt(args[0]);
+    arr = new int[arrLength];
+    int permutation = (int)Integer.parseInt(args[1]);
+    for(int i = 0;i < arrLength;i++) {
+      arr[i] = i;
+    }
+    for(int j = 0;j < permutation - 1;j++){
       permute();
     }
+    //arr = new int[] {0,1,2,3,4,5,6,7,8,9};
+    // for(int i = 0;i < 999999;i++){
+    //   permute();
+    // }
     for(int j = 0;j < arr.length;j++){
-      System.out.print(arr[j]);
+      System.out.print(arr[j] + " ");
     }
     System.out.println();
   }
